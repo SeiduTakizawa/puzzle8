@@ -11,7 +11,7 @@ public class MovableElement {
         int newRow = getNewRow(row, direction);
         int newCol = getNewCol(col, direction);
 
-        // Check if the new position is within bounds and has an empty space
+
         if (isValidPosition(newRow, newCol) && board[newRow][newCol] == EMPTY_SPACE) {
             swapElements(row, col, newRow, newCol);
             return true;

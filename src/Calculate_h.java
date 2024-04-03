@@ -1,6 +1,6 @@
 public class Calculate_h {
     private int[][] myArray;
-    private int targetArray[][] = {{6, 5, 4}, {7, 0, 3}, {8, 1, 2}}; // Predefined target
+    private int targetArray[][] = {{6, 5, 4}, {7, 0, 3}, {8, 1, 2}};
 
     public Calculate_h(int[][] myArray) {
         this.myArray = myArray;
@@ -13,7 +13,7 @@ public class Calculate_h {
         for (int i = 0; i < myArray.length; i++) {
             for (int j = 0; j < myArray[i].length; j++) {
                 if (myArray[i][j] != targetArray[i][j]) {
-                    h++; // Count mismatched tiles
+                    h++;
                 }
             }
         }
