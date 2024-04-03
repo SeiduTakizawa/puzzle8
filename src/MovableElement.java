@@ -11,7 +11,6 @@ public class MovableElement {
         int newRow = getNewRow(row, direction);
         int newCol = getNewCol(col, direction);
 
-
         if (isValidPosition(newRow, newCol) && board[newRow][newCol] == EMPTY_SPACE) {
             swapElements(row, col, newRow, newCol);
             return true;
@@ -25,6 +24,14 @@ public class MovableElement {
                 return row - 1;
             case DOWN:
                 return row + 1;
+            case UP_LEFT:
+                return row - 1;
+            case DOWN_LEFT:
+                return row + 1;
+            case UP_RIGHT:
+                return row - 1;
+            case DOWN_RIGHT:
+                return row + 1;
             default:
                 return row;
         }
@@ -35,6 +42,14 @@ public class MovableElement {
             case LEFT:
                 return col - 1;
             case RIGHT:
+                return col + 1;
+            case UP_LEFT:
+                return col - 1;
+            case DOWN_LEFT:
+                return col - 1;
+            case UP_RIGHT:
+                return col + 1;
+            case DOWN_RIGHT:
                 return col + 1;
             default:
                 return col;
@@ -56,6 +71,9 @@ public class MovableElement {
         DOWN,
         LEFT,
         RIGHT,
+        UP_LEFT,
+        DOWN_LEFT,
+        UP_RIGHT,
+        DOWN_RIGHT
     }
-
 }

@@ -24,7 +24,7 @@ public class Board {
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                if (i == emptyRow && j == emptyCol) {
+                if (i == 1 && j == 1) {
                     puzzle8Array[i][j] = 0;
                 } else {
                     System.out.print("Enter the number for position (" + i + ", " + j + "): ");
