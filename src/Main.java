@@ -5,7 +5,7 @@ public class Main {
             Calculate_h h=new Calculate_h(puzzle8.getArray());
             System.out.println(h.getH());
             MovableElement move=new MovableElement(puzzle8.getArray());
-            if(move.move(0,2, MovableElement.Direction.DOWN_LEFT)){
+            if(move.move(0,1, MovableElement.Direction.DOWN)){
                 puzzle8.display();
             }
         }

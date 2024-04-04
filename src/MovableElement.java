@@ -19,41 +19,19 @@ public class MovableElement {
     }
 
     private int getNewRow(int row, Direction direction) {
-        switch (direction) {
-            case UP:
-                return row - 1;
-            case DOWN:
-                return row + 1;
-            case UP_LEFT:
-                return row - 1;
-            case DOWN_LEFT:
-                return row + 1;
-            case UP_RIGHT:
-                return row - 1;
-            case DOWN_RIGHT:
-                return row + 1;
-            default:
-                return row;
-        }
+        return switch (direction) {
+            case UP, UP_LEFT, UP_RIGHT -> row - 1;
+            case DOWN, DOWN_LEFT, DOWN_RIGHT -> row + 1;
+            default -> row;
+        };
     }
 
     private int getNewCol(int col, Direction direction) {
-        switch (direction) {
-            case LEFT:
-                return col - 1;
-            case RIGHT:
-                return col + 1;
-            case UP_LEFT:
-                return col - 1;
-            case DOWN_LEFT:
-                return col - 1;
-            case UP_RIGHT:
-                return col + 1;
-            case DOWN_RIGHT:
-                return col + 1;
-            default:
-                return col;
-        }
+        return switch (direction) {
+            case LEFT, UP_LEFT, DOWN_LEFT -> col - 1;
+            case RIGHT, UP_RIGHT, DOWN_RIGHT -> col + 1;
+            default -> col;
+        };
     }
 
     private boolean isValidPosition(int row, int col) {
