@@ -1,21 +1,42 @@
 public class MovableElement {
 
     private int[][] board;
-    private final int EMPTY_SPACE = 0;
 
     public MovableElement(int[][] board) {
         this.board = board;
     }
 
-    public boolean move(int row, int col, Direction direction) {
+    public boolean move(Direction direction) {
+        // Find the position of the zero element
+        int[] zeroPosition = findZeroPosition();
+
+        int row = zeroPosition[0];
+        int col = zeroPosition[1];
+
         int newRow = getNewRow(row, direction);
         int newCol = getNewCol(col, direction);
 
-        if (isValidPosition(newRow, newCol) && board[newRow][newCol] == EMPTY_SPACE) {
+        // Check if the new position is valid and swap the elements
+        if (isValidPosition(newRow, newCol)) {
             swapElements(row, col, newRow, newCol);
             return true;
         }
+
         return false;
+    }
+
+    private int[] findZeroPosition() {
+        int[] position = new int[2];
+        for (int i = 0; i < board.length; i++) {
+            for (int j = 0; j < board[i].length; j++) {
+                if (board[i][j] == 0) { // Checking for the integer 0
+                    position[0] = i;
+                    position[1] = j;
+                    return position;
+                }
+            }
+        }
+        return position; // This should never happen if your board is properly initialized
     }
 
     private int getNewRow(int row, Direction direction) {
