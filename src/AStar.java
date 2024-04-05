@@ -10,20 +10,24 @@ public class AStar {
         run();
     }
     public void run(){
-        PossibleStates possibleStates = new PossibleStates(startNode);
-        createHList(startNode);
+        Node currNode= startNode;
         boolean loop = true;
         while (loop){
-            int min = startNode.gethList().get(0);
+            PossibleStates possibleStates = new PossibleStates(currNode);
+            createHList(currNode);
+            int min = currNode.gethList().get(0);
             int position = 0;
-            for(int i = 1; i < startNode.gethList().size(); i++){
-                if(startNode.gethList().get(i) < min){
-                    min = startNode.gethList().get(i);
+            for(int i = 1; i < currNode.gethList().size(); i++){
+                if(currNode.gethList().get(i) < min){
+                    min = currNode.gethList().get(i);
                     position = i;
+
                 }
             }
-            // Now 'position' is the index of the smallest element
-            // Do something with 'position'
+            currNode = currNode.getChildren().get(position);
+            if(min == 0){
+                loop = false;
+            }
         }
     }
 
