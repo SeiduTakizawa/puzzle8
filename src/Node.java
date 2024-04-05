@@ -2,11 +2,14 @@ import com.sun.source.tree.UsesTree;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class Node {
+
     private int[][] state;
     private List<Node> children;
+    private HashMap<Node,Integer> childrenMap;
     private Node parent;
     private int cost;
     private int depth;
@@ -14,6 +17,7 @@ public class Node {
     public Node (int[][] state){
         this.state =state;
         this.children = new ArrayList<Node>();
+        this.childrenMap = new HashMap<>();
         this.parent = null;
         this.cost = 0;
         this.depth = 1;
@@ -34,7 +38,13 @@ public class Node {
         }
     }
 
+    public HashMap<Node, Integer> getChildrenMap() {
+        return childrenMap;
+    }
 
+    public void addChildrenMap(Node node,Integer i) {
+        this.childrenMap.put(node,i);
+    }
     public int getCost() {
         return cost;
     }

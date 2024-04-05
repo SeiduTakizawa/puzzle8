@@ -12,6 +12,10 @@ public class Board {
         this.puzzle8Array = new int[rows][columns];
     }
 
+    public Board(int[][] array){
+        this.puzzle8Array = array;
+    }
+
     public void initializePuzzle() {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
@@ -23,15 +27,19 @@ public class Board {
         int z = 1;
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                if (i == 1 && j ==1) {
+                if (i == 0 && j == 2) {
                     puzzle8Array[i][j] = 0;
-                    z++;
+
                 }
                 else {
                     puzzle8Array[i][j] = z;
                     z++;
                 }
                 /*
+                6 5 4
+                7 0 3
+                8 1 2
+
                 if (i == emptyRow && j == emptyCol) {
                     puzzle8Array[i][j] = 0;
                 } else {

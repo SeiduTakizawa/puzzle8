@@ -1,3 +1,5 @@
+import java.util.HashMap;
+
 public class PossibleStates {
     public PossibleStates(Node node){
         Board puzzle8=new Board(3,3);
@@ -7,6 +9,7 @@ public class PossibleStates {
             MovableElement movableElement = new MovableElement(puzzle8.getArray());
             if(movableElement.canMove(movableElement.getDirections().get(i))){
                 Node childNode = new Node(movableElement.move(movableElement.getDirections().get(i)));
+                childNode.setParent(node);
                 node.addChildren(childNode);
             }
         }
