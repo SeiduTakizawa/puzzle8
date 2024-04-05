@@ -12,16 +12,21 @@ public class AStar {
     public void run(){
         PossibleStates possibleStates = new PossibleStates(startNode);
         createHList(startNode);
-        //while h not zero possible states me mikrotero h
         boolean loop = true;
         while (loop){
-            for(int i = 0;i<startNode.gethList().size();i++){
-                if
+            int min = startNode.gethList().get(0);
+            int position = 0;
+            for(int i = 1; i < startNode.gethList().size(); i++){
+                if(startNode.gethList().get(i) < min){
+                    min = startNode.gethList().get(i);
+                    position = i;
+                }
             }
+            // Now 'position' is the index of the smallest element
+            // Do something with 'position'
         }
-
-
     }
+
 
     public void createHList(Node node){
         List<Node> children = node.getChildren();

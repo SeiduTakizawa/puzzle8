@@ -11,6 +11,7 @@ public class PossibleStates {
                 Node childNode = new Node(movableElement.move(movableElement.getDirections().get(i)));
                 childNode.setParent(node);
                 node.addChildren(childNode);
+                
             }
         }
         node.printChildren();
