@@ -1,5 +1,6 @@
 import java.sql.Array;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.EnumSet;
 
 public class MovableElement {
@@ -8,7 +9,19 @@ public class MovableElement {
     ArrayList<Direction> directions = new ArrayList<>(EnumSet.allOf(Direction.class));
 
     public MovableElement(int[][] board) {
-        this.board = board;
+        this.board = deepCopy(board);
+    }
+
+    public static int[][] deepCopy(int[][] original) {
+        if (original == null) {
+            return null;
+        }
+
+        final int[][] result = new int[original.length][];
+        for (int i = 0; i < original.length; i++) {
+            result[i] = Arrays.copyOf(original[i], original[i].length);
+        }
+        return result;
     }
 
     public boolean move(Direction direction) {
