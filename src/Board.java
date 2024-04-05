@@ -20,15 +20,20 @@ public class Board {
         int emptyRow = random.nextInt(rows);
         int emptyCol = random.nextInt(columns);
 
-
+        int z = 0;
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
+                puzzle8Array[i][j] = z;
+                z++;
+                /*
                 if (i == emptyRow && j == emptyCol) {
                     puzzle8Array[i][j] = 0;
                 } else {
                     System.out.print("Enter the number for position (" + i + ", " + j + "): ");
                     puzzle8Array[i][j] = scanner.nextInt();
                 }
+                */
+
             }
         }
     }

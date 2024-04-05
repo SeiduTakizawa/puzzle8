@@ -1,11 +1,11 @@
 import com.sun.source.tree.UsesTree;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Node {
     private int[][] state;
-
     private List<Node> children;
     private Node parent;
     private int cost;
@@ -23,7 +23,7 @@ public class Node {
     public void printChildren() {
         String string = null;
         for (Node child : children) {
-            System.out.println(child.toString());
+            System.out.println(Arrays.deepToString(child.getState()));
         }
     }
 
