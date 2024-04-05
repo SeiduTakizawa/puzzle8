@@ -48,7 +48,6 @@ public class MovableElement {
     public int[][] move(Direction direction) {
         // Create a copy of the current board
         int[][] newBoard = Arrays.stream(board).map(int[]::clone).toArray(int[][]::new);
-
         // Find the position of the zero element
         int[] zeroPosition = findZeroPosition();
 

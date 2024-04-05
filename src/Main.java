@@ -2,8 +2,8 @@ public class Main {
         public static void main(String[] args) {
             Board puzzle8= new Board(3, 3);
             puzzle8.initializePuzzle();
-            Node node = new Node(puzzle8.getArray());
             puzzle8.display();
+            Node node = new Node(puzzle8.getArray());
             PossibleStates possibleStates = new PossibleStates(node);
             /*puzzle8.initializePuzzle();
             puzzle8.display();

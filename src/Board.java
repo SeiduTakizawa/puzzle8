@@ -20,11 +20,17 @@ public class Board {
         int emptyRow = random.nextInt(rows);
         int emptyCol = random.nextInt(columns);
 
-        int z = 0;
+        int z = 1;
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < columns; j++) {
-                puzzle8Array[i][j] = z;
-                z++;
+                if (i == 1 && j ==1) {
+                    puzzle8Array[i][j] = 0;
+                    z++;
+                }
+                else {
+                    puzzle8Array[i][j] = z;
+                    z++;
+                }
                 /*
                 if (i == emptyRow && j == emptyCol) {
                     puzzle8Array[i][j] = 0;
@@ -33,8 +39,7 @@ public class Board {
                     puzzle8Array[i][j] = scanner.nextInt();
                 }
                 */
-
-            }
+                    }
         }
     }
 
