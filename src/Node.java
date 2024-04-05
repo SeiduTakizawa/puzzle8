@@ -34,7 +34,13 @@ public class Node {
     public void printChildren() {
         String string = null;
         for (Node child : children) {
-            System.out.println(Arrays.deepToString(child.getState()));
+            for (int i = 0; i < child.getState().length; i++) {
+                for (int j = 0; j < child.getState().length; j++) {
+                    System.out.print(child.getState()[i][j] + " " );
+                }
+                System.out.println();
+            }
+            System.out.println();
         }
     }
 

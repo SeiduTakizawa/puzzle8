@@ -45,6 +45,7 @@ public class Board {
             }
             System.out.println();
         }
+        System.out.println();
     }
     public int[][] getArray() {
         return this.puzzle8Array;

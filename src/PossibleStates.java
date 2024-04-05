@@ -4,7 +4,8 @@ public class PossibleStates {
 
         for(int i=0;i<8;i++){
             if(movableElement.move(movableElement.getDirections().get(i))){
-                System.out.println("nigger");
+                Node childNode = new Node(movableElement.getBoard());
+                node.addChildren(childNode);
             }
         }
         node.printChildren();
