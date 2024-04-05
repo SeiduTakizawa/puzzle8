@@ -1,6 +1,21 @@
+import java.sql.Array;
+import java.util.ArrayList;
+import java.util.EnumSet;
+
 public class MovableElement {
 
+    public int[][] getBoard() {
+        return board;
+    }
+
     private int[][] board;
+
+    public ArrayList<Direction> getDirections() {
+        return directions;
+    }
+
+    ArrayList<Direction> directions = new ArrayList<>(EnumSet.allOf(Direction.class));
+
 
     public MovableElement(int[][] board) {
         this.board = board;
@@ -64,6 +79,7 @@ public class MovableElement {
         board[row1][col1] = board[row2][col2];
         board[row2][col2] = temp;
     }
+
 
     public enum Direction {
         UP,

@@ -10,10 +10,9 @@ public class Board {
         this.rows = rows;
         this.columns = columns;
         this.puzzle8Array = new int[rows][columns];
-        initializePuzzle();
     }
 
-    private void initializePuzzle() {
+    public void initializePuzzle() {
         Scanner scanner = new Scanner(System.in);
         Random random = new Random();
 
