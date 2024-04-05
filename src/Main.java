@@ -3,10 +3,6 @@ public class Main {
             Board puzzle8= new Board(3, 3);
             puzzle8.initializePuzzle();
             Node node = new Node(puzzle8.getArray());
-            MovableElement movableElement = new MovableElement(puzzle8.getArray());
-            if(movableElement.move(MovableElement.Direction.RIGHT)){
-                puzzle8.display();
-            }
             puzzle8.display();
             PossibleStates possibleStates = new PossibleStates(node);
             /*puzzle8.initializePuzzle();

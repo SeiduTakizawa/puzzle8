@@ -12,24 +12,14 @@ public class Node {
     private int depth;
 
     public Node (int[][] state){
-        this.state = deepCopy(state);
+        this.state =state;
         this.children = new ArrayList<Node>();
         this.parent = null;
         this.cost = 0;
         this.depth = 1;
 
     }
-    public static int[][] deepCopy(int[][] original) {
-        if (original == null) {
-            return null;
-        }
 
-        final int[][] result = new int[original.length][];
-        for (int i = 0; i < original.length; i++) {
-            result[i] = Arrays.copyOf(original[i], original[i].length);
-        }
-        return result;
-    }
 
     public void printChildren() {
         String string = null;
