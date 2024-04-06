@@ -11,10 +11,22 @@ public class AStar {
     }
     public Node getMinHNode(Node node){
         int min = node.gethList().get(0);
-        int position = 0;
-        for(int i = 1; i < node.gethList().size(); i++){
-
+        int position = 1;
+        for(int i = 0; i < node.gethList().size(); i++){
+            if(node.getParent() == null){
+                if(node.gethList().get(i) < min) {
+                    min = node.gethList().get(i);
+                    position = i;
+                }
+            }
+            else if(!node.getParent().isDupe(node.getChildren().get(i))){
+                if(node.gethList().get(i) < min) {
+                    min = node.gethList().get(i);
+                    position = i;
+                }
+            }
         }
+        return node.getChildren().get(position);
     }
     public void run(){
         Node currNode = startNode;
@@ -22,42 +34,11 @@ public class AStar {
         while (loop){
             PossibleStates possibleStates = new PossibleStates(currNode);
             createHList(currNode);
-            int min = currNode.gethList().get(0);
-            int position = 0;
-            for(int i = 1; i < currNode.gethList().size(); i++){
-
-                if(!currNode.getParent().isDupe(currNode.getChildren().get(i))){
-                    if(currNode.gethList().get(i) < min){
-                        min = currNode.gethList().get(i);
-                        position = i;
-                    } else if (currNode.gethList().get(i) == min) {
-                        min = currNode.gethList().get(i);
-                    }
-                }
-
-            }
-            if(currNode.getParent() == null){
-                currNode = currNode.getChildren().get(position);
-                Board board = new Board(currNode.getState());
-                System.out.println("CHOSEN BOARD");
-                board.display();
-                System.out.println("BASTARD=========================================");
-            } else if (currNode.getParent().isDupe(currNode.getChildren().get(position))){
-                currNode = currNode.getChildren().get(position + 1);
-                Board board = new Board(currNode.getState());
-                System.out.println("CHOSEN BOARD");
-                board.display();
-                System.out.println("=========================================");
-            } else {
-                currNode = currNode.getChildren().get(position);
-                Board board = new Board(currNode.getState());
-                System.out.println("CHOSEN BOARD");
-                board.display();
-                System.out.println("=========================================");
-            }
-            if(min == 0){
-                loop = false;
-            }
+            currNode = getMinHNode(currNode);
+            Board board = new Board(currNode.getState());
+            System.out.println("CHOSEN BOARD");
+            board.display();
+            System.out.println("=========================================");
         }
     }
 

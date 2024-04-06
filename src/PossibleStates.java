@@ -14,6 +14,5 @@ public class PossibleStates {
                 
             }
         }
-        node.printChildren();
     }
 }
