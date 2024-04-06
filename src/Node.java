@@ -9,9 +9,6 @@ public class Node {
 
     private int[][] state;
     private List<Node> children;
-
-
-
     private List<Integer> hList;
     private Node parent;
     private int cost;
@@ -41,7 +38,16 @@ public class Node {
         }
     }
 
-
+    public boolean isDupe(Node node){
+        for (int i = 0; i < node.getState().length; i++) {
+            for (int j = 0; j < node.getState().length; j++) {
+                if (this.getState()[i][j] != node.getState()[i][j]){
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
     public List<Integer> gethList() {
         return hList;
     }

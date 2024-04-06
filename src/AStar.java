@@ -10,7 +10,7 @@ public class AStar {
         run();
     }
     public void run(){
-        Node currNode= startNode;
+        Node currNode = startNode;
         boolean loop = true;
         while (loop){
             PossibleStates possibleStates = new PossibleStates(currNode);
@@ -21,10 +21,24 @@ public class AStar {
                 if(currNode.gethList().get(i) < min){
                     min = currNode.gethList().get(i);
                     position = i;
-
+                } else if (currNode.gethList().get(i) == min) {
+                    min = currNode.gethList().get(i);
                 }
             }
-            currNode = currNode.getChildren().get(position);
+            if (currNode.isDupe(currNode.getChildren().get(position))){
+                currNode = currNode.getChildren().get(position + 1);
+                Board board = new Board(currNode.getState());
+                System.out.println("CHOSEN BOARD");
+                board.display();
+                System.out.println("=========================================");
+            } else {
+                currNode = currNode.getChildren().get(position);
+                Board board = new Board(currNode.getState());
+                System.out.println("CHOSEN BOARD");
+                board.display();
+                System.out.println("=========================================");
+
+            }
             if(min == 0){
                 loop = false;
             }
@@ -36,7 +50,7 @@ public class AStar {
         List<Node> children = node.getChildren();
         for(int i = 0;i<children.size();i++){
             Calculate_h calculate_h = new Calculate_h(children.get(i).getState());
-            startNode.addHList(calculate_h.getH());
+            node.addHList(calculate_h.getH());
         }
         System.out.println();
     }

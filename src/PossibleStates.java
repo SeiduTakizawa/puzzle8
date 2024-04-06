@@ -6,7 +6,7 @@ public class PossibleStates {
         puzzle8.initializePuzzle();
 
         for(int i=0;i<8;i++){
-            MovableElement movableElement = new MovableElement(puzzle8.getArray());
+            MovableElement movableElement = new MovableElement(node.getState());
             if(movableElement.canMove(movableElement.getDirections().get(i))){
                 Node childNode = new Node(movableElement.move(movableElement.getDirections().get(i)));
                 childNode.setParent(node);

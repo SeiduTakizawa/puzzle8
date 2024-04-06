@@ -2,8 +2,8 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Board {
-    private int rows;
-    private int columns;
+    private int rows = 3;
+    private int columns = 3;
     private int[][] puzzle8Array;
 
     public Board(int rows, int columns) {
