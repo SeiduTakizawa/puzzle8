@@ -18,7 +18,7 @@ public class AStar {
                 }
             }
             else if(!node.getParent().isDupe(node.getChildren().get(i))){ //Check if parent is same as a children
-                if(deepContains(node)){
+                if(!deepContains(node.getChildren().get(i))){
                     if(node.gethList().get(i) < min) {  //Check if it is smaller than then current min
                         min = node.gethList().get(i);
                         position = i;
