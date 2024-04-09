@@ -49,6 +49,8 @@ public class AStar {
             Board board = new Board(currNode.getState());
             System.out.println("CHOSEN BOARD");
             board.display();
+            Calculate_h h = new Calculate_h(board.getArray());
+            System.out.println(h.getH());
             System.out.println("=========================================");
         }
     }

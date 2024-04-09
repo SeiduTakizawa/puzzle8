@@ -13,6 +13,7 @@ public class Node {
     private Node parent;
     private int cost;
     private int depth;
+    private List<Integer> fList = new ArrayList<>();
 
     public Node (int[][] state){
         this.state =state;
@@ -91,8 +92,12 @@ public class Node {
     public void setParent(Node parent) {
         this.parent = parent;
     }
-
-
+    public void addFList(int f) {
+        this.fList.add(f);
+    }
+    public List<Integer> getFList() {
+        return this.fList;
+    }
     public int[][] getState() {
         return state;
     }
