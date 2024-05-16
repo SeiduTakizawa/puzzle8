@@ -11,23 +11,17 @@ public class AStar {
         int min = node.gethList().get(0);
         int position = 0;
         for(int i = 0; i < node.gethList().size(); i++){
-            if(node.getParent() == null){
-                if(node.gethList().get(i) < min) {
+
+            if(!deepContains(node.getChildren().get(i))){
+                if(node.gethList().get(i) < min) {  //Check if it is smaller than then current min
                     min = node.gethList().get(i);
+                    position = i;
+                } else if (node.gethList().get(i) == min){ //Check if it is equal to the current min
                     position = i;
                 }
             }
-            else if(!node.getParent().isDupe(node.getChildren().get(i))){ //Check if parent is same as a children
-                if(!deepContains(node.getChildren().get(i))){
-                    if(node.gethList().get(i) < min) {  //Check if it is smaller than then current min
-                        min = node.gethList().get(i);
-                        position = i;
-                    } else if (node.gethList().get(i) == min){ //Check if it is equal to the current min
-                        position = i;
-                    }
-                }
-            }
         }
+
         return node.getChildren().get(position);
     }
 
@@ -52,6 +46,9 @@ public class AStar {
             Calculate_h h = new Calculate_h(board.getArray());
             System.out.println(h.getH());
             System.out.println("=========================================");
+            if(h.getH()==0){
+                loop = false;
+            }
         }
     }
 

@@ -4,7 +4,11 @@ public class Main {
             puzzle8.initializePuzzle();
             puzzle8.display();
             Node node = new Node(puzzle8.getArray());
-            AStar aStar = new AStar(node);
+            ucs ucs = new ucs(node);
+            ucs.solve();
+
+
+            //AStar aStar = new AStar(node);
             /*puzzle8.initializePuzzle();
             puzzle8.display();
             Calculate_h h=new Calculate_h(puzzle8.getArray());

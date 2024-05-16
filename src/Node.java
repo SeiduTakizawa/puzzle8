@@ -14,6 +14,8 @@ public class Node {
     private int cost;
     private int depth;
     private List<Integer> fList = new ArrayList<>();
+    private String stringState;
+    private Integer maxCost;
 
     public Node (int[][] state){
         this.state =state;
@@ -22,9 +24,25 @@ public class Node {
         this.parent = null;
         this.cost = 0;
         this.depth = 1;
-
+        this.stringState = stringBuilder();
+        this.maxCost = 0;
     }
 
+    public String stringBuilder(){
+        StringBuilder str = new StringBuilder();
+        for (int i =0; i<state.length; i++) {
+            for(int j = 0; j<state[i].length;j++ ) {
+                str.append(state[i][j]);
+            }
+        }
+        return str.toString();
+    }
+    public String getStateString(){
+        return stringState;
+    }
+    public int hashCode(){
+        return this.getStateString().hashCode();
+    }
 
     public void printChildren() {
         String string = null;
@@ -38,7 +56,15 @@ public class Node {
             System.out.println();
         }
     }
+    public boolean isGoal(){
 
+        boolean result = false;
+        int [][] goal = {{6, 5, 4}, {7, 0, 3}, {8, 1, 2}};
+        Node goalNode = new Node(goal);
+        result = this.stringState.equals(goalNode.stringState);
+        return result;
+
+    }
     public boolean isDupe(Node node){
         for (int i = 0; i < node.getState().length; i++) {
             for (int j = 0; j < node.getState().length; j++) {
@@ -60,6 +86,13 @@ public class Node {
     public int getCost() {
         return cost;
     }
+    public void setMaxCost(int i) {
+        this.maxCost = this.getParent().getMaxCost() + i;
+    }
+
+    public Integer getMaxCost() {
+        return maxCost;
+    }
 
     public void setCost(int cost) {
         this.cost = cost;
@@ -69,8 +102,8 @@ public class Node {
         return depth;
     }
 
-    public void addDepth() {
-        this.depth += 1;
+    public void setDepth(int depth){
+        this.depth = depth;
     }
 
     public List<Node> getChildren() {
@@ -82,7 +115,8 @@ public class Node {
     }
 
     public void addChildren(Node childNode) {
-        children.add(childNode);
+        childNode.setMaxCost(childNode.getCost() + this.getMaxCost());
+        this.children.add(childNode);
     }
 
     public Node getParent() {
