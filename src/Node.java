@@ -13,9 +13,12 @@ public class Node {
     private Node parent;
     private int cost;
     private int depth;
+    private int h;
+    private int f;
     private List<Integer> fList = new ArrayList<>();
     private String stringState;
     private Integer maxCost;
+    private int targetArray[][] = {{6, 5, 4}, {7, 0, 3}, {8, 1, 2}};
 
     public Node (int[][] state){
         this.state =state;
@@ -26,8 +29,12 @@ public class Node {
         this.depth = 1;
         this.stringState = stringBuilder();
         this.maxCost = 0;
+        this.h = getH();
     }
-
+    public void setF(int f){
+        this.f = f;
+    }
+    public int getF(){return f;}
     public String stringBuilder(){
         StringBuilder str = new StringBuilder();
         for (int i =0; i<state.length; i++) {
@@ -75,6 +82,20 @@ public class Node {
         }
         return true;
     }
+    public int getH() {
+        int h = 0;
+
+        // Iterate through the arrays
+        for (int i = 0; i < state.length; i++) {
+            for (int j = 0; j < state[i].length; j++) {
+                if (state[i][j] != targetArray[i][j]) {
+                    h++;
+                }
+            }
+        }
+
+        return h;
+    }
     public List<Integer> gethList() {
         return hList;
     }
@@ -116,6 +137,7 @@ public class Node {
 
     public void addChildren(Node childNode) {
         childNode.setMaxCost(childNode.getCost() + this.getMaxCost());
+        childNode.setF(childNode.getMaxCost() + childNode.getH());
         this.children.add(childNode);
     }
 
@@ -138,5 +160,9 @@ public class Node {
 
     public void setState(int[][] state) {
         this.state = state;
+    }
+
+    public void setH(int h) {
+        this.h = h;
     }
 }

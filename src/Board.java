@@ -5,7 +5,7 @@ public class Board {
     private int columns = 3;
     private int[][] board;
     private List<Board> boardList = new ArrayList<>();
-
+    private int targetArray[][] = {{6, 5, 4}, {7, 0, 3}, {8, 1, 2}};
     public Board(int rows, int columns) {
         this.rows = rows;
         this.columns = columns;
@@ -13,13 +13,13 @@ public class Board {
         int[][] start1 = {{1,3,4},{8,6,2},{7,0,5}};
         Board board1 = new Board(start1);
         boardList.add(board1);
-        int[][] start2 = {{2,8,1},{0,4,3},{7,6,5}};
+        int[][] start2 = {{7,6,5},{8,3,4},{1,0,2}};
         Board board2 = new Board(start2);
         boardList.add(board2);
-        int[][] start3 = {{5,6,7},{4,0,8},{3,2,1}};
+        int[][] start3 = {{8,4,6},{3,1,5},{2,0,7}};
         Board board3 = new Board(start3);
         boardList.add(board3);
-        int[][] start4 = {{7,6,5},{8,3,4},{1,0,2}};
+        int[][] start4 = {{2,8,1},{0,4,3},{7,6,5}};
         Board board4 = new Board(start4);
         boardList.add(board4);
         int[][] start5 = {{7,6,5},{8,3,4},{1,0,2}};
@@ -70,6 +70,7 @@ public class Board {
                         z++;
                     }
                 }
+
             }
         }
     }
@@ -106,7 +107,7 @@ public class Board {
     public ArrayList<Direction> getPossibleMoves() {
         return possibleMoves;
     }
-    private ArrayList<Direction> possibleMoves = new ArrayList<>(EnumSet.allOf(Direction.class));
+    private ArrayList<Direction> possibleMoves = new ArrayList<>();
 
     public void setPossibleMoves(){
         for (Direction direction : directions) {
@@ -138,7 +139,8 @@ public class Board {
     public int move(Direction direction) {
         // Create a copy of the current board
         int[][] newBoard = Arrays.stream(board).map(int[]::clone).toArray(int[][]::new);
-        // Find the position of the zero element
+
+        // Find the position of  zero element
         int[] zeroPosition = findZeroPosition();
 
         int row = zeroPosition[0];

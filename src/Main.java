@@ -1,13 +1,26 @@
 public class Main {
         public static void main(String[] args) {
+
             Board puzzle8= new Board(3, 3);
             puzzle8.initializePuzzle();
             puzzle8.display();
             Node node = new Node(puzzle8.getArray());
-            ucs ucs = new ucs(node);
-            ucs.solve();
+            //ucs ucs = new ucs(node);
+            //ucs.solve();
+            System.out.println("astar");
+            astar_new aStar = new astar_new(node);
+            aStar.solve();
+            /*
+            Board testBoard1 = new Board(3,3);
+            testBoard1.initializePuzzle();
+            testBoard1.setPossibleMoves();
+            testBoard1.display();
+            testBoard1.move(Board.Direction.DOWN_RIGHT);
+            testBoard1.display();
 
 
+
+             */
             //AStar aStar = new AStar(node);
             /*puzzle8.initializePuzzle();
             puzzle8.display();

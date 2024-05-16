@@ -1,22 +1,23 @@
-import java.util.*;
 import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.PriorityQueue;
 
-
-public class ucs {
+public class astar_new {
 
     private Node initialState;
 
-    public ucs(Node initialState) {
+    public astar_new(Node initialState) {
         this.initialState = initialState;
     }
-    private class gComparator implements Comparator<Node>{
+    private class gComparator implements Comparator<Node> {
 
         public int compare(Node a, Node b) {
-            return a.getMaxCost() - b.getMaxCost();
+            return a.getF() - b.getF();
         }
     }
-    public boolean solve() {
 
+    public boolean solve() {
         int i=0;
         PriorityQueue<Node> queue = new PriorityQueue<>(new gComparator());
         initialState.setCost(0); // Initial state cost is 0 moves
